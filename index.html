@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Renewables at Work – Data Visualization Project</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header>
+  <h1>“Renewables at Work”</h1>
+  <p>by Jamison Davis</p>
+</header>
+
+<main>
+  <section id="intro">
+  
+<h2>Introduction</h2>
+
+<p><strong>Connecting energy mix to real‑world climate outcomes</strong><br>
+More than 75 % of global greenhouse‑gas emissions come from energy production and use. Understanding how a country’s renewable‑energy share translates into per‑capita CO<sub>2</sub> trends makes the link between policy choices and atmospheric impact concrete.</p>
+
+<p><strong>A clear, policy‑friendly benchmark: the “30 % rule”</strong><br>
+The analysis tests the simple proposition that crossing the 30 % renewables threshold correlates with lower CO<sub>2</sub>-per‑capita growth. This yard‑stick is intuitive enough for decision‑makers yet empirically grounded in two open datasets (Our World in Data energy and CO<sub>2</sub> series).</p>
+
+<p><strong>Timeliness</strong></p>
+<ul>
+<li>2023 saw a record <strong>507 GW</strong> of renewable‑power additions—nearly ten times the annual rate a decade ago.</li>
+<li>Meanwhile, global CO<sub>2</sub>-per‑capita has plateaued since 2019 despite economic recovery, suggesting structural shifts in power generation are beginning to bite.</li>
+</ul>
+
+<p><strong>Economic relevance</strong><br>
+The project juxtaposes top‑10 GDP economies (responsible for ≈ 65 % of world output) with high‑renewable exemplars such as Norway, Sweden, Brazil, Denmark, and Finland. If rich, fossil‑heavy nations can replicate the emissions trajectories of these examples, the climate dividend is enormous.</p>
+
+<p><strong>Visual storytelling as evidence</strong><br>
+Four complementary graphics—time‑series slopes, correlation scatter, before/after dumbbells, and a bivariate glow map (the <em>money shot</em>)—paint the same story from different angles, helping a non‑technical audience see the statistical signal without wading through equations.</p>
+
+<p><strong>Why it’s interesting</strong></p>
+<ul>
+<li>Counter‑intuitive win: some high‑GDP, low‑renewable countries (Germany, U.K.) have slashed emissions more aggressively than expected, showing that fast policy can offset a poor baseline.</li>
+<li>Geographic surprises: Latin America (Uruguay, Costa Rica) and parts of sub‑Saharan Africa emerge as “quiet achievers,” pairing &gt; 30 % renewables with falling per‑capita CO<sub>2</sub>—often overlooked in mainstream coverage.</li>
+<li>Equity lens: because per‑capita metrics normalise for population, the analysis highlights lifestyle intensity rather than sheer national totals, sparking debate about fair effort‑sharing.</li>
+</ul>
+
+<p><strong>Actionability</strong><br>
+The 30 % threshold provides a clear interim target for energy ministries: countries still under that line can estimate the CO<sub>2</sub> savings unlocked by reaching it; those already above can showcase their advantage when negotiating climate finance or carbon‑border adjustments.</p>
+
+<p><strong>Open, reproducible data</strong><br>
+Using only two widely cited OWID datasets keeps the workflow transparent—any researcher or policymaker can rerun the code, update for 2023 data, or refine the threshold for sector‑specific studies.</p>
+
+  </section>
+
+  
+<h2>Hypothesis</h2>
+<p>Countries whose renewable‑energy share was at least 30 % of total final energy in 2010 experienced a smaller average increase (or a larger decrease) in per‑capita CO<sub>2</sub> emissions between 2010 and 2022 than countries whose 2010 renewable share was below 30 %.</p>
+<p><strong>Null (H₀):</strong> The mean change in per‑capita CO<sub>2</sub> emissions from 2010 to 2022 is the same for the ≥ 30 % and &lt; 30 % groups.<br>
+<strong>Alternative (H₁):</strong> The ≥ 30 % group shows a smaller mean change (μ<sub>high</sub> &lt; μ<sub>low</sub>).</p>
+
+
+  
+<section class="viz" id="viz1">
+  <h3>Visualization 1 – CO₂ per‑Capita Trends (2010–2022)</h3>
+  <img src="images/visualization1.png" alt="Visualization 1 – CO₂ per‑Capita Trends (2010–2022)" class="img-responsive">
+  <h4>Context</h4>
+  <p>The slope format emphasises trajectories, not just endpoints, letting you see whether a country is bending its emissions curve downward. Separating the lines by 2021 renewables allows a direct visual test of the hypothesis.</p>
+  <h4>Analysis</h4>
+  <p>Green cohort lines cluster low and flat—Norway and Sweden hover below 5 t CO₂ pc all period; Brazil trends slightly downward. Red cohort starts high (USA ≈ 17 t in 2010) but most show substantial declines; China rises then plateaus. Germany achieves the steepest drop of any red‑group nation (≈ ‑31 %). Overall, the green group needed far smaller reductions to reach today’s low levels, underscoring the preventive value of an early high‑renewables mix.</p>
+</section>
+
+  
+<section class="viz" id="viz2">
+  <h3>Visualization 2 – 2021 Renewable Share vs CO₂‑Change</h3>
+  <img src="images/visualization3.png" alt="Visualization 2 – 2021 Renewable Share vs CO₂‑Change" class="img-responsive">
+  <h4>Context</h4>
+  <p>A single frame that reveals direction (up or down) and degree of change as a function of current renewables penetration.</p>
+  <h4>Analysis</h4>
+  <p>Strong negative trend line: for every +10 pp increase in 2021 renewables, median CO₂ change falls ≈ 4 pp. Countries right of the 30 % line overwhelmingly sit at or below 0 % change (e.g., Iceland ‑49 %, Norway ‑15 %). Several red‑dot outperformers (Germany ‑31 %, UK ‑35 %) demonstrate that policy can compensate for a low 2010 baseline—but they had to cut far more aggressively than green peers simply to converge.</p>
+</section>
+
+  
+<section class="viz" id="viz3">
+  <h3>Visualization 3 – CO₂ per‑Capita 2010 vs 2022 Dumbbell</h3>
+  <img src="images/visualization2.png" alt="Visualization 3 – CO₂ per‑Capita 2010 vs 2022 Dumbbell" class="img-responsive">
+  <h4>Context</h4>
+  <p>Dumbbells give an at‑a‑glance delta while preserving actual magnitudes—ideal for highlighting who moved farthest and who started clean.</p>
+  <h4>Analysis</h4>
+  <p>Green nations begin—and stay—well below 10 t CO₂ pc. Norway, already under 7 t, trims another 0.3 t. In contrast, the U.S. cuts ≈ ‑3.3 t but still ends &gt; 13 t, nearly double the worst green emitter (Finland). Germany’s bar is the longest among reds, visually confirming its leadership in absolute reduction.</p>
+</section>
+
+  
+<section class="viz" id="viz4">
+  <h3>Visualization 4 – Interactive Bivariate Map (Money Shot)</h3>
+  <iframe src="interactive-map.html" title="Interactive bivariate map"></iframe>
+  <h4>Context</h4>
+  <p>By merging the two variables in a single geographic layer, viewers can instantly spot regional clusters and outliers without decoding axes. Bubble size keeps focus on the biggest movers, not just the worst performers.</p>
+  <h4>Analysis</h4>
+  <p>Nordic & Latin‑American renewables belt (Norway → Uruguay → Costa Rica) glows blue and is darkest green—the ideal quadrant. The Middle East & parts of Asia show pale‑green land with bright‑red halos, signalling fossil‑heavy growth. North America & Europe: moderately green tones but mostly blue glows—high base emissions yet strong cuts. Bubble sizes highlight China, India, and the U.S. as the most consequential shifts in absolute human terms.</p>
+</section>
+
+
+  
+<h2>Conclusion</h2>
+<p>Taken together, the data and visuals converge on a simple but powerful insight: countries that surpass roughly one‑third renewables in their energy mix tend to keep—or even shrink—their carbon footprint per person, while those that lag below that threshold usually struggle to bend the curve. By tracing long‑term trajectories, mapping present‑day standings, and spotlighting both exemplary leaders and hard‑fought turnarounds, the four graphics translate the hypothesis into a multi‑angle narrative that resonates with policymakers and the public alike.</p>
+
+
+  
+<h2>Data Sets Used</h2>
+<ul>
+<li><a href="https://ourworldindata.org/grapher/share-of-final-energy-consumption-from-renewable-sources">Renewable‑energy share of final energy consumption – OWID</a></li>
+<li><a href="https://ourworldindata.org/grapher/co-emissions-per-capita">CO<sub>2</sub> emissions per capita – OWID</a></li>
+</ul>
+
+</main>
+
+<footer>&copy; 2025 Jamison Davis – Parsons Strategic Design &amp; Management</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
